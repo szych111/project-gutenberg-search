@@ -1,6 +1,6 @@
 The project enables searching through e-books made available by Project Gutenberg.
 
-E-books can by search by:
+E-books can be  searched by:
 authors
 titles
 languages
