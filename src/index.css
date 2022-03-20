@@ -1,13 +1,540 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ----------------- */
+/* CUSTOM PROPERTIES */
+/* ----------------- */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bellefair&display=swap'); */
+
+:root {
+  --gap: 3em;
+  --underline-gap: 2rem;
+
+  /* colours */
+  --clr-dark: 1,38,38;
+  --clr-light: 3,140,127;
+  --clr-accent: 4,191,173;
+  --clr-white: 242,242,242;
+
+  /* font-sizes */
+  --fs-900: 9.375rem;
+  --fs-800: 6.25rem;
+  --fs-700: 3.5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  /* font-families */
+  --ff-serif: "Bellefair", serif;
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-sans-normal: "Barlow", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ----------------- */
+/* RESET             */
+/* ----------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, 
+h1, h2, h3, h4,
+p, picture, figure {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5,
+p {
+  font-weight: 400;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-400);
+  color: rgb(var(--clr-white));
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------- */
+/* UTILITY CLASSES   */
+/* ----------------- */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);    
+}
+
+.flow > *:where(:not(:last-child)) {
+  margin-bottom: var(--flow-space, 1rem);
+  
+}
+
+.container {
+  padding-inline: 2em;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* colors */
+
+.bg-dark {background-color: rgb(var(--clr-dark));}
+.bg-accent {background-color: rgb(var(--clr-accent));}
+.bg-white {background-color: rgb(var(--clr-white));}
+.bg-light {background-color: rgb(var(--clr-light));}
+.bg-light-access {background-color: rgba(var(--clr-light), 0.5);}
+
+.text-dark {color: rgb(var(--clr-dark));}
+.text-accent {color: rgb(var(--clr-accent));}
+.text-white {color: rgb(var(--clr-white));}
+
+/* classes */
+
+.typography {
+  margin: 4rem 0;
+}
+
+.flex-basis-100 {
+  flex-basis: 100%;
+}
+
+.color-box {
+  padding: 3rem 1rem 1rem;
+  border: 1px solid white;
+}
+
+/* typography */
+
+.ff-serif { font-family: var(--ff-serif); } 
+.ff-sans-cond { font-family: var(--ff-sans-cond); } 
+.ff-sans-normal { font-family: var(--ff-sans-normal); } 
+
+.letter-spacing-1 { letter-spacing: 4.75px; } 
+.letter-spacing-2 { letter-spacing: 2.7px; } 
+.letter-spacing-3 { letter-spacing: 2.35px; } 
+
+.uppercase { text-transform: uppercase; }
+
+.fs-900 { font-size: var(--fs-900); }
+.fs-800 { font-size: var(--fs-800); }
+.fs-700 { font-size: var(--fs-700); }
+.fs-600 { font-size: var(--fs-600); }
+.fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
+.fs-300 { font-size: var(--fs-300); }
+.fs-200 { font-size: var(--fs-200); }
+
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+.numbered-title {
+  text-transform: uppercase;
+  letter-spacing: 4.72px;
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+}
+
+.numbered-title span {
+  font-weight: 700;
+  color: rgba(var(--clr-white), 0.2);
+  margin-right: 0.5em;
+}
+
+/* ---------------- */
+/* Components       */
+/* ---------------- */
+
+.card {
+  border-radius: 5px;
+  box-shadow: 10px 10px 10px rgb(155, 144, 144);
+  background-color: rgb(var(--clr-dark));
+  padding: 1em;
+}
+
+.large-button {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0 2em;
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  position: relative;
+  margin-bottom: 1em;
+  z-index: 1;
+}
+
+.large-button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  background-color: rgba(var(--clr-white), 0.5);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
+.primary-navigation {
+  --gap: 8rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a {
+  text-decoration: none;
+}
+
+.primary-navigation a > span {
+  font-weight: 700;
+  margin-right: 0.5em;
+}/* ----------------- */
+/* CUSTOM PROPERTIES */
+/* ----------------- */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bellefair&display=swap'); */
+
+:root {
+  --gap: 3em;
+  --underline-gap: 2rem;
+
+  /* colours */
+  --clr-dark: 1,38,38;
+  --clr-light: 3,140,127;
+  --clr-accent: 4,191,173;
+  --clr-white: 242,242,242;
+
+  /* font-sizes */
+  --fs-900: 9.375rem;
+  --fs-800: 6.25rem;
+  --fs-700: 3.5rem;
+  --fs-600: 2rem;
+  --fs-500: 1.75rem;
+  --fs-400: 1.125rem;
+  --fs-300: 1rem;
+  --fs-200: 0.875rem;
+
+  /* font-families */
+  --ff-serif: "Bellefair", serif;
+  --ff-sans-cond: "Barlow Condensed", sans-serif;
+  --ff-sans-normal: "Barlow", sans-serif;
+}
+
+/* ----------------- */
+/* RESET             */
+/* ----------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, 
+h1, h2, h3, h4,
+p, picture, figure {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5,
+p {
+  font-weight: 400;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-400);
+  color: rgb(var(--clr-white));
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------- */
+/* UTILITY CLASSES   */
+/* ----------------- */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);    
+}
+
+.flow > *:where(:not(:last-child)) {
+  margin-bottom: var(--flow-space, 1rem);
+  
+}
+
+.container {
+  padding-inline: 2em;
+  max-width: 80rem;
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* colors */
+
+.bg-dark {background-color: rgb(var(--clr-dark));}
+.bg-accent {background-color: rgb(var(--clr-accent));}
+.bg-white {background-color: rgb(var(--clr-white));}
+.bg-light {background-color: rgb(var(--clr-light));}
+.bg-light-access {background-color: rgba(var(--clr-light), 0.5);}
+
+.text-dark {color: rgb(var(--clr-dark));}
+.text-accent {color: rgb(var(--clr-accent));}
+.text-white {color: rgb(var(--clr-white));}
+
+/* classes */
+
+.typography {
+  margin: 4rem 0;
+}
+
+.flex-basis-100 {
+  flex-basis: 100%;
+}
+
+.color-box {
+  padding: 3rem 1rem 1rem;
+  border: 1px solid white;
+}
+
+/* typography */
+
+.ff-serif { font-family: var(--ff-serif); } 
+.ff-sans-cond { font-family: var(--ff-sans-cond); } 
+.ff-sans-normal { font-family: var(--ff-sans-normal); } 
+
+.letter-spacing-1 { letter-spacing: 4.75px; } 
+.letter-spacing-2 { letter-spacing: 2.7px; } 
+.letter-spacing-3 { letter-spacing: 2.35px; } 
+
+.uppercase { text-transform: uppercase; }
+
+.fs-900 { font-size: var(--fs-900); }
+.fs-800 { font-size: var(--fs-800); }
+.fs-700 { font-size: var(--fs-700); }
+.fs-600 { font-size: var(--fs-600); }
+.fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
+.fs-300 { font-size: var(--fs-300); }
+.fs-200 { font-size: var(--fs-200); }
+
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+.numbered-title {
+  text-transform: uppercase;
+  letter-spacing: 4.72px;
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-500);
+}
+
+.numbered-title span {
+  font-weight: 700;
+  color: rgba(var(--clr-white), 0.2);
+  margin-right: 0.5em;
+}
+
+/* ---------------- */
+/* Components       */
+/* ---------------- */
+
+.card {
+  width: min(90vw, 1200px);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(122, 114, 114);
+  background-color: rgb(var(--clr-dark));
+  padding: 1em;
+  margin-inline: auto;
+}
+
+.large-button {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  padding: 0 2em;
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  position: relative;
+  margin-bottom: 1em;
+  z-index: 1;
+}
+
+.large-button::after {
+  display: block;
+  content: '';
+  position: absolute;
+  background-color: rgba(var(--clr-white), 0.5);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 500ms linear, transform 750ms ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+  transform: scale(1.3);
+  opacity: 1;
+}
+
+.primary-navigation {
+  --gap: 8rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a {
+  text-decoration: none;
+}
+
+.primary-navigation a > span {
+  font-weight: 700;
+  margin-right: 0.5em;
+}
+
+.underline-indicators > * {
+  border-bottom: 0.2rem solid rgb(var(--clr-white), 0);
+  padding: var(--underline-gap) 0;
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+  border-color: rgb(var(--clr-white), .25);
+}
+
+.underline-indicators > .active {
+  border-color: rgb(var(--clr-white), 1);
+}
+
+.tab-list {
+  --gap: 2.5rem;
+
+}
+
+
+.underline-indicators > * {
+  border-bottom: 0.2rem solid rgb(var(--clr-white), 0);
+  padding: var(--underline-gap) 0;
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+  border-color: rgb(var(--clr-white), .25);
+}
+
+.underline-indicators > .active {
+  border-color: rgb(var(--clr-white), 1);
+}
+
+.tab-list {
+  --gap: 2.5rem;
+
 }
