@@ -517,6 +517,14 @@ button {
   margin-bottom: 5em;
 }
 
+/* ---------------- */
+/* Form       */
+/* ---------------- */
+
 form > * {
   margin: 0 1em 1em 0;
+}
+
+.checkbox > * {
+  margin-right: 2em;
 }
