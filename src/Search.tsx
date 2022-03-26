@@ -2,10 +2,9 @@
 
 import { FC, useState } from "react";
 
-import { AuthorsList } from "./AuthorsList.tsx";
 import "./index.css";
 
-export const AuthorsSearch: FC = () => {
+export const Search: FC = () => {
   const [userInput, setUserInput] = useState<{
     firstName: string;
     lastName: string;
@@ -13,6 +12,8 @@ export const AuthorsSearch: FC = () => {
     firstName: "",
     lastName: "",
   });
+  let hisname = 'Joe'
+  let books: string[]
 
   const firstNameChangeHandler = (e) => {
     setUserInput((prevUserInput) => {
@@ -25,20 +26,18 @@ export const AuthorsSearch: FC = () => {
     });
   };
 
-  const author = {
-    name: '',
-    dateOfBirth: '',
-    dateofDeath: '',
-    lang: '',
-    books: {}
-  }
-
   async function fetchAuthors(name: string) {
     const response = await fetch(`https://gutendex.com/books?search=${name}`)
-    const data = response.json();
-    console.log(data);
-  }
+    const data = await response.json();
+    console.log(data.results)
+    const firstBook = data.results[0]
+    console.log(firstBook.authors[0].name)
+    hisname = firstBook.authors[0].name
+    console.log(hisname)
 
+    
+  }
+  console.log(hisname)
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -65,14 +64,14 @@ export const AuthorsSearch: FC = () => {
           placeholder="last name"
           onChange={lastNameChangeHandler}
         />
-        <button
-          className="uppercase ff-sans-normal text-clr-dark letter-spacing-2"
-          type="submit"
-        >
-          Submit
-        </button>
       </form>
-      {data && <AuthorsList />}
+      <div className='card'>
+            <div className='author'>
+                <p>{hisname}</p>
+                <p>{books ? 'something' : 'Dumas' }</p>
+                
+            </div>
+        </div>
     </div>
   );
 };

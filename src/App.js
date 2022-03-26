@@ -1,4 +1,4 @@
-import { AuthorsSearch } from './AuthorsSearch.tsx';
+import { Search } from './Search.tsx';
 
 import './index.css'
 
@@ -6,7 +6,7 @@ import './index.css'
 function App() {
   return (
     <div className="App">
-      <AuthorsSearch />
+      <Search />
     </div>
   );
 }
