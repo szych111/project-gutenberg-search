@@ -1,0 +1,8 @@
+.card {
+    width: min(20em, 85vw);
+    background-color: rgb(220, 172, 148);
+    margin-inline: auto;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 5px rgb(189, 188, 188);
+    padding: 1.5rem 1rem;
+}
