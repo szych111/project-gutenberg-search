@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .card {
   width: min(45em, 85vw);
   background-color: rgb(220, 172, 148);
@@ -7,7 +12,18 @@
   padding: 1.5rem 0.5rem;
 }
 
+.flex {
+  display: flex;
+}
 
+.search-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container input {
+  margin: 0 2rem 0 0 ;
+}
 
 button {
   border: 0;

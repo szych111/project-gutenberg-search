@@ -14,7 +14,7 @@ export const BooksList: FC = () => {
     setBooksList(data.results);
   }
 
-  fetchBooks(url);
+  // fetchBooks(url);
 
   return (
     <Card>
