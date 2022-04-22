@@ -6,3 +6,7 @@
     box-shadow: 5px 5px 5px rgb(189, 188, 188);
     padding: 1.5rem 1rem;
 }
+
+.card > * {
+    margin-bottom: 1em;
+}

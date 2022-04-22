@@ -1,0 +1,17 @@
+fieldset {
+    padding: 0.5em 1em;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    margin: 0 0.25em;
+}
+
+.checkboxContainer {
+    display: flex;
+    margin-right: 1em;
+}

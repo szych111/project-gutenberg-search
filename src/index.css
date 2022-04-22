@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+body {
+  text-align: center;
+  padding-top: 2em;
+}
+
 .card {
   width: min(45em, 85vw);
   background-color: rgb(220, 172, 148);
@@ -21,7 +26,7 @@
   align-items: center;
 }
 
-.search-container input {
+.searchInput {
   margin: 0 2rem 0 0 ;
 }
 
@@ -67,9 +72,12 @@ form {
   columns: 2 ;
 }
 
-
-
 input {
   display: block;
   margin: 0 auto 1em;
+}
+
+fieldset {
+  margin-inline: 1em;
+  padding-inline: 1em;
 }
